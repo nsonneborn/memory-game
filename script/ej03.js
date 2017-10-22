@@ -9,7 +9,7 @@ var ImgSource = [
   "images/ada-lovelace.jpg",
   "images/ellen-ochoa.jpg",
   "images/grace-hopper.png",
-  "images/katherine-johnson.jpg",
+  "images/katherine_johnson.jpg",
   "images/marie-curie.jpg",
   "images/rosalind-franklin.png",
   "images/sophie-germain.jpg",
