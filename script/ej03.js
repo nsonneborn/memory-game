@@ -2,6 +2,8 @@ var BoxOpened = "";
 var ImgOpened = "";
 var Counter = 0;
 var ImgFound = 0;
+var numImg = 0;
+var seconds = 100;
 
 var Source = "#boxcard";
 
@@ -18,6 +20,17 @@ var ImgSource = [
   "images/WomenSTEM.jpg"
 ];
 
+function promptUser() {
+    numImg = prompt("Welcome! How many different images would you like to play with? (3-10)", "");
+    while (!(numImg >= 3 && numImg <= 10 )){
+      numImg = prompt("Invalid input. Please enter a number between 3 and 10. How many images would you like to play with?", "");
+    }
+    seconds = prompt("How many seconds would you like to play? (Enter a number between 10 and 120)", "");
+    while(!(seconds >= 10 && seconds <= 120)){
+      seconds= prompt("Invalid input. Please enter a number between 10 and 120. How many seconds would you like to play?.", "");
+    }
+}
+
 function RandomFunction(MaxValue, MinValue) {
 		return Math.round(Math.random() * (MaxValue - MinValue) + MinValue);
 	}
@@ -28,7 +41,7 @@ function ShuffleImages() {
 	var ImgArr = new Array();
 
 
-	for (var i = 0; i < ImgAll.length; i++) {
+	for (var i = 0; i < numImg; i++) {
 		ImgArr[i] = $("#" + ImgThis.attr("id") + " img").attr("src");
 		ImgThis = ImgThis.next();
 	}
@@ -45,7 +58,8 @@ function ShuffleImages() {
 }
 
 function ResetGame() {
-	ShuffleImages();
+  numImg = 0;
+  seconds = 0;
 	$(Source + " div img").hide();
 	$(Source + " div").css("visibility", "visible");
 	Counter = 0;
@@ -54,10 +68,12 @@ function ResetGame() {
 	BoxOpened = "";
 	ImgOpened = "";
 	ImgFound = 0;
+  //playGame();
 	return false;
 }
 
 function OpenCard() {
+
 	var id = $(this).attr("id");
 
 	if ($("#" + id + " img").is(":hidden")) {
@@ -95,18 +111,39 @@ function OpenCard() {
 		$("#counter").html("" + Counter);
 
 		if (ImgFound == ImgSource.length) {
-			$("#counter").prepend('<span id="success">You Found All Pictues With </span>');
-		}
+			$("#counter").prepend('<span id="success">You Found All Pictures With </span>');
+    }
+    if (Counter == 1){
+    setInterval(function(){
+      $('#counter').prepend('<span id="success">You Found "'+ ImgFound + ' Pictures With </span>');
+    }, seconds*1000);
+  }
 	}
 }
 
 $(function() {
-
+  promptUser();
+  var ImgSourceTrimmed = ImgSource.slice(0, numImg);
+  ShuffleImages();
 for (var y = 1; y < 3 ; y++) {
-	$.each(ImgSource, function(i, val) {
+	$.each(ImgSourceTrimmed, function(i, val) {
 		$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
 	});
 }
 	$(Source + " div").click(OpenCard);
-	ShuffleImages();
 });
+
+// function playGame() {
+//     promptUser();
+//     var ImgSourceTrimmed = ImgSource.slice(0, numImg);
+//     ShuffleImages();
+//   for (var y = 1; y < 3 ; y++) {
+//   	$.each(ImgSourceTrimmed, function(i, val) {
+//   		$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
+//   	});
+//   }
+//   	$(Source + " div").click(OpenCard);
+//
+// }
+//
+// playGame();
