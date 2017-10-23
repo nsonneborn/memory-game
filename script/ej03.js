@@ -37,6 +37,7 @@ function RandomFunction(MaxValue, MinValue) {
 
 function ShuffleImages() {
 	var ImgAll = $(Source).children();
+  console.log(ImgAll);
 	var ImgThis = $(Source + " div:first-child");
 	var ImgArr = new Array();
 
@@ -63,12 +64,13 @@ function ResetGame() {
 	$(Source + " div img").hide();
 	$(Source + " div").css("visibility", "visible");
 	Counter = 0;
-	$("#success").remove();
+	$("#success").text("");
 	$("#counter").html("" + Counter);
 	BoxOpened = "";
 	ImgOpened = "";
 	ImgFound = 0;
-  //playGame();
+  $(Source).empty();
+  playGame();
 	return false;
 }
 
@@ -111,39 +113,43 @@ function OpenCard() {
 		$("#counter").html("" + Counter);
 
 		if (ImgFound == ImgSource.length) {
-			$("#counter").prepend('<span id="success">You Found All Pictures With </span>');
+			$("#success").text('Congrats! You found all pictures with ' + Counter + 'clicks, in under ' + seconds + ".");
     }
     if (Counter == 1){
-    setInterval(function(){
-      $('#counter').prepend('<span id="success">You Found "'+ ImgFound + ' Pictures With </span>');
+    setTimeout(function(){
+      $('#success').text('Time is up! In ' + seconds + ' seconds, you found '
+      + ImgFound + ' pictures with ' + Counter + " clicks.");
+      $('#boxcard').css("visibility", "hidden");
     }, seconds*1000);
   }
 	}
 }
 
-$(function() {
-  promptUser();
-  var ImgSourceTrimmed = ImgSource.slice(0, numImg);
-  ShuffleImages();
-for (var y = 1; y < 3 ; y++) {
-	$.each(ImgSourceTrimmed, function(i, val) {
-		$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
-	});
-}
-	$(Source + " div").click(OpenCard);
-});
-
-// function playGame() {
-//     promptUser();
-//     var ImgSourceTrimmed = ImgSource.slice(0, numImg);
-//     ShuffleImages();
-//   for (var y = 1; y < 3 ; y++) {
-//   	$.each(ImgSourceTrimmed, function(i, val) {
-//   		$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
-//   	});
-//   }
-//   	$(Source + " div").click(OpenCard);
-//
+// $(function() {
+//   promptUser();
+//   var ImgSourceTrimmed = ImgSource.slice(0, numImg);
+//   ShuffleImages();
+// for (var y = 1; y < 3 ; y++) {
+// 	$.each(ImgSourceTrimmed, function(i, val) {
+// 		$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
+// 	});
 // }
-//
-// playGame();
+// 	$(Source + " div").click(OpenCard);
+// });
+
+function playGame() {
+    promptUser();
+    var ImgSourceTrimmed = ImgSource.slice(0, numImg);
+    console.log(ImgSourceTrimmed);
+    ShuffleImages();
+  for (var y = 1; y < 3 ; y++) {
+  	$.each(ImgSourceTrimmed, function(i, val) {
+  		$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
+  	});
+  }
+    console.log(Source);
+  	$(Source + " div").click(OpenCard);
+
+}
+
+$(playGame);
