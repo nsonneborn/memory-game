@@ -117,8 +117,12 @@ function OpenCard() {
     }
     if (Counter == 1){
     setTimeout(function(){
+<<<<<<< HEAD
       $('#success').text('Time is up! In ' + seconds + ' seconds, you found '
       + ImgFound + ' pictures with ' + Counter + " clicks.");
+=======
+      $('#counter').prepend('<span id="success">Time is up! In ' + seconds + ' seconds, you found '+ ImgFound + ' pictures with </span>');
+>>>>>>> 9c3b963318fb18cd7480c32bc2f1cd1d89bb4c5c
       $('#boxcard').css("visibility", "hidden");
     }, seconds*1000);
   }
