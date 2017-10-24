@@ -113,7 +113,7 @@ function OpenCard() {
 		$("#counter").html("" + Counter);
 
 		if (ImgFound == ImgSource.length) {
-			$("#success").text('Congrats! You found all pictures with ' + Counter + 'clicks, in under ' + seconds + ".");
+			$("#success").text('Congrats! You found all pictures with ' + Counter + ' clicks, in under ' + seconds + ".");
     }
     if (Counter == 1){
     setTimeout(function(){
@@ -125,17 +125,6 @@ function OpenCard() {
 	}
 }
 
-// $(function() {
-//   promptUser();
-//   var ImgSourceTrimmed = ImgSource.slice(0, numImg);
-//   ShuffleImages();
-// for (var y = 1; y < 3 ; y++) {
-// 	$.each(ImgSourceTrimmed, function(i, val) {
-// 		$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
-// 	});
-// }
-// 	$(Source + " div").click(OpenCard);
-// });
 
 function playGame() {
     promptUser();
