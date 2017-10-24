@@ -17,7 +17,7 @@ var ImgSource = [
   "images/sophie-germain.jpg",
   "images/women-eniac.jpg",
   "images/memgameholley.png",
-  "images/WomenSTEM.jpg"
+  "images/nina-sonneborn.jpg"
 ];
 
 function promptUser() {
