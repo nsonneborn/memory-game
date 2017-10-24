@@ -13,52 +13,53 @@ body {
 	margin-left: 10%;
 }
 #footer{
+	position: fixed;
+	font: 12px Verdana;
 	text-align: right;
 	float: right;
 	bottom:5px;
-	font: 12px Verdana;
-	position: fixed;
 }
-#picbox {
+
+#picsquare {
 	margin: 0px auto;
 	width: 640px;
 }
-#boxcard {
+#card {
 	z-index: 1;
 	margin: 10px 0 0;
 }
-#boxcard div{
+#card div{
 	float: left;
 	width: 100px;
 	height: 100px;
 	margin: 5px;
 	padding: 5px;
 	border: 4px solid ##33DBFF;
-	cursor: pointer;
-	border-radius: 10px;
-	box-shadow: 0 1px 5px rgba(0,0,0,.5);
-  background: #B1B1B1;
 	z-index: 2;
-}
-#boxcard div img {
-	display: none;
+	cursor: pointer;
+	box-shadow: 0 1px 5px rgba(0,0,0,.5);
+	background: #B1B1B1;
 	border-radius: 10px;
+}
+#card div img {
+	border-radius: 10px;
+	display: none;
 	z-index: 3;
 }
-#boxbuttons {
+#squarebuttons {
+	display: block;
 	text-align: center;
 	margin: 20px;
-	display: block;
 }
-#boxbuttons .button {
+#squarebuttons .button {
+	cursor: pointer;
 	text-transform: uppercase;
 	background: #33DBFF;
 	color: #FF5733;
 	padding: 5px 10px;
 	margin: 5px;
 	border-radius: 10px;
-	cursor: pointer;
 }
-#boxbuttons .button:hover {
+#squarebuttons .button:hover {
 	background: #999;
 }

@@ -5,7 +5,7 @@ var ImgFound = 0;
 var numImg = 0;
 var seconds = 100;
 
-var Source = "#boxcard";
+var Source = "#card";
 
 var ImgSource = [
   "images/ada-lovelace.jpg",
@@ -16,7 +16,7 @@ var ImgSource = [
   "images/rosalind-franklin.png",
   "images/sophie-germain.jpg",
   "images/women-eniac.jpg",
-  "images/women-in-tech.jpg",
+  "images/memgameholley.png",
   "images/WomenSTEM.jpg"
 ];
 
@@ -119,7 +119,7 @@ function OpenCard() {
     setTimeout(function(){
       $('#success').text('Time is up! In ' + seconds + ' seconds, you found '
       + ImgFound + ' pictures with ' + Counter + " clicks.");
-      $('#boxcard').css("visibility", "hidden");
+      $('#card').css("visibility", "hidden");
     }, seconds*1000);
   }
 	}
